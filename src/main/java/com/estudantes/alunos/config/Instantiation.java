@@ -5,8 +5,6 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-
 import com.estudantes.alunos.DTO.AlunosDTO;
 import com.estudantes.alunos.DTO.CursosDTO;
 import com.estudantes.alunos.Repository.AlunosRepository;

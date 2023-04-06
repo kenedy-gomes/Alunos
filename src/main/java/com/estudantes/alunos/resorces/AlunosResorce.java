@@ -39,8 +39,8 @@ public class AlunosResorce {
 	
 	@GetMapping(value = "/name")
 	public ResponseEntity<List<Alunos>> find(@RequestParam String name) {
-		List<Alunos> list = service.findByName(name);
-		return ResponseEntity.ok().body(list);
+		List<Alunos> obj = service.findByName(name);
+		return ResponseEntity.ok().body(obj);
 	}
 	
 

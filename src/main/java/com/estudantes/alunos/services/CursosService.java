@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.estudantes.alunos.Repository.CursosRepository;
+import com.estudantes.alunos.domain.Alunos;
 import com.estudantes.alunos.domain.Cursos;
 
 @Service
@@ -29,7 +30,7 @@ public class CursosService {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
-	public List<Cursos> findByCursos(String name){
+	public List<Cursos> findByName(String name) {
 		return repo.findByName(name);
 	}
 	
