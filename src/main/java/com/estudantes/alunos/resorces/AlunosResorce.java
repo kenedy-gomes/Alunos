@@ -51,7 +51,7 @@ public class AlunosResorce {
 	}
 	
 	
-	@PostMapping
+	@PostMapping(value = "/cadastro")
 	public ResponseEntity<Object> insert(@RequestBody Alunos objDto) {
 		Alunos obj = service.insert(objDto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();

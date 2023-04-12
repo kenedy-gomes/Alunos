@@ -2,14 +2,11 @@ package com.estudantes.alunos.services;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
 import com.estudantes.alunos.Repository.CursosRepository;
-import com.estudantes.alunos.domain.Alunos;
 import com.estudantes.alunos.domain.Cursos;
 
 @Service
