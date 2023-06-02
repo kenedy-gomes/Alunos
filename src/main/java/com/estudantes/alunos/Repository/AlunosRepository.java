@@ -12,5 +12,9 @@ public interface AlunosRepository extends MongoRepository<Alunos, String>  {
 
 	@Query("{'name': {$regex: ?0 }})")
 	List<Alunos> findByName(String name);
+	
+	Alunos findByEmail(String email);
+ 
+
 
 }

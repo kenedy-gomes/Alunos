@@ -37,9 +37,9 @@ public class Instantiation implements CommandLineRunner {
 		Cursos c3 = new Cursos(null, "Arquitetura");
 		cursosRepository.saveAll(Arrays.asList(c1, c2, c3));
 
-		Alunos kenedy = new Alunos(null, "Kenedy Gomes Camargo", "70005483123", "kndgfls5@gmail.com");
-		Alunos Gerson = new Alunos(null, "Gerson ferreira", "52828382332", "Gersonferreira@gmail.com");
-		Alunos Alano = new Alunos(null, "Isabella ribeiro", "70005483123", "Isabella@gmail.com");
+		Alunos kenedy = new Alunos(null, "Kenedy Gomes Camargo", "70005483123", "kndgfls5@gmail.com", "1234");
+		Alunos Gerson = new Alunos(null, "Gerson ferreira", "52828382332", "Gersonferreira@gmail.com", "1234");
+		Alunos Alano = new Alunos(null, "Isabella ribeiro", "70005483123", "Isabella@gmail.com", "1234");
 		alunosRepository.saveAll(Arrays.asList(kenedy, Gerson, Alano));
 
 		Alun_Matriculas m1 = new Alun_Matriculas(new AlunosDTO(kenedy), new CursosDTO(c1));

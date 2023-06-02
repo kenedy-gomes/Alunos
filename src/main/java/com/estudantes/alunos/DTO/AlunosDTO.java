@@ -8,6 +8,7 @@ public class AlunosDTO {
 	private String name;
 	private String cpf;
 	private String email;
+	private String password;
 	
 	public AlunosDTO() {}
 
@@ -16,6 +17,7 @@ public class AlunosDTO {
 		name = obj.getName();
 		cpf = obj.getCpf();
 		email = obj.getEmail();
+		password = obj.getPassword();
 	}
 
 	public String getId() {
@@ -50,5 +52,12 @@ public class AlunosDTO {
 		this.email = email;
 	}
 	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password; 
+	}
 	
 }

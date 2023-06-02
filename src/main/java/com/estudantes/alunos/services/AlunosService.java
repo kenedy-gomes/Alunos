@@ -43,4 +43,13 @@ public class AlunosService {
 		return repo.findByName(name);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
+    public boolean login(String email, String password) {
+        Alunos user =  repo.findByEmail(email);
+        if (user != null && user.getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
+	
 }

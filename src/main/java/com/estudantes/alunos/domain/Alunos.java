@@ -15,15 +15,17 @@ public class Alunos implements Serializable {
 	private String name;
 	private String cpf;
 	private String email;
+	private String password;
 
 	public Alunos() {}
 
-	public Alunos(String id, String name, String cpf, String email) {
+	public Alunos(String id, String name, String cpf, String email, String password) {
 		super();
 		this.id_alunos = id;
 		this.name = name;
 		this.cpf = cpf;
 		this.email = email;
+		this.password = password;
 		
 	}
 
@@ -74,5 +76,13 @@ public class Alunos implements Serializable {
 			return false;
 		Alunos other = (Alunos) obj;
 		return Objects.equals(id_alunos, other.id_alunos);
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
