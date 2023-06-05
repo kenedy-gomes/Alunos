@@ -28,10 +28,24 @@ public class AlunosService {
 		return  ResponseEntity.ok().body(obj);
 	}
 	
+	 
 	@CrossOrigin(origins = "http://localhost:3000")
 	public Alunos insert(Alunos obj) {
+		 String email = obj.getEmail();
+	        
+	        if (isEmailAlreadyRegistered(email)) {
+	            throw new IllegalArgumentException("O email já está cadastrado.");
+	        } 
+	        
 		return repo.insert(obj);
+		
 	}
+	
+	 public boolean isEmailAlreadyRegistered(String email) {
+	        Alunos existingUser = repo.findByEmail(email);
+	        return existingUser != null;
+	    }
+	
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	public void delete(String id) {
