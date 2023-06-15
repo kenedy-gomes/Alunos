@@ -25,4 +25,6 @@ public class AlunoLoginRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	 
 }

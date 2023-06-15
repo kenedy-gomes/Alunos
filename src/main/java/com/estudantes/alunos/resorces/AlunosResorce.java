@@ -26,6 +26,13 @@ public class AlunosResorce {
 	@Autowired
 	AlunosService service;
 	
+	private final AuthenticationService authenticationService;
+
+    @Autowired
+    public AuthenticationController(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
+	
 	@GetMapping
 	public ResponseEntity<List<Alunos>> findAll(){
 		List<Alunos> list = service.findAll();
@@ -64,7 +71,7 @@ public class AlunosResorce {
     public ResponseEntity<String> login(@RequestBody AlunoLoginRequest request) {
         boolean isAuthenticated = service.login(request.getEmail(), request.getPassword());
         if (isAuthenticated) {
-            return ResponseEntity.ok("Login successful");
+            return ResponseEntity.ok("LOGIN SUCESS"); 
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
