@@ -1,11 +1,16 @@
 package com.estudantes.alunos.resorces;
 
 import java.net.URI;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,24 +19,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.jsf.el.WebApplicationContextFacesELResolver;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.estudantes.alunos.DTO.LoginResponseDTO;
+import com.estudantes.alunos.config.JwtTokenUtil;
 import com.estudantes.alunos.domain.Alunos;
 import com.estudantes.alunos.services.AlunosService;
+ 
 
-
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/alunos")
 public class AlunosResorce {
-
+	
+ 
 	@Autowired
 	AlunosService service;
 	
-	private final AuthenticationService authenticationService;
+	@Autowired
+	JwtTokenUtil jwt;
 
-    @Autowired
-    public AuthenticationController(AuthenticationService authenticationService) {
-        this.authenticationService = authenticationService;
-    }
 	
 	@GetMapping
 	public ResponseEntity<List<Alunos>> findAll(){
@@ -68,15 +76,17 @@ public class AlunosResorce {
 	
 	
 	@PostMapping(value = "/login")
-    public ResponseEntity<String> login(@RequestBody AlunoLoginRequest request) {
+    public String login(@RequestBody AlunoLoginRequest request) {
         boolean isAuthenticated = service.login(request.getEmail(), request.getPassword());
-        if (isAuthenticated) {
-            return ResponseEntity.ok("LOGIN SUCESS"); 
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
-        }
+        
+        	if(isAuthenticated) {
+        		 String token = jwt.generateToken(Map.of("usuario", request.getEmail()));
+        		 return token;
+        	} 
+        
+        	throw new RuntimeException("Usuário ou senha inválidas");
     }
-
-	
+ 
+ 
 }
 

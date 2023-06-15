@@ -46,7 +46,6 @@ public class AlunosService {
 	        return existingUser != null;
 	    }
 	
-	
 	@CrossOrigin(origins = "http://localhost:3000")
 	public void delete(String id) {
 		 repo.deleteById(id);
